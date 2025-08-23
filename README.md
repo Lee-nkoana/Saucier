@@ -14,7 +14,7 @@ Saucier is a Python-powered web application that helps users generate personaliz
 ## 🧰 Tech Stack
 
 - **Python**
-- **Flask or Django**
+- **Django**
 - **HTML / CSS / JavaScript**
 - **PostgreSQL**
 - **REST APIs**
@@ -25,7 +25,7 @@ Saucier is a Python-powered web application that helps users generate personaliz
 1. **Clone the repo**
 
    ```bash
-   git clone https://github.com/yourusername/saucier.git
+   git clone https://github.com/Lee-nkoana/saucier.git
    cd saucier
    ```
 
@@ -35,6 +35,14 @@ Saucier is a Python-powered web application that helps users generate personaliz
    python manage.py migrate
 
    python manage.py runserver
+   ```
+
+   or
+
+   ```bash
+   python3 manage.py migrate
+
+   python3 manage.py runserver
    ```
 
 ## 🧑‍💻 Contributing

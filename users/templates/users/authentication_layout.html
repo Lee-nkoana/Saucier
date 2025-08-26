@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{% block title %}Auctions{% endblock %}</title>
+    <link href="{% static 'users/styles.css' %}" rel="stylesheet" />
+    <script>
+      (function (d) {
+        var config = {
+            kitId: "sse2qfx",
+            scriptTimeout: 3000,
+            async: true,
+          },
+          h = d.documentElement,
+          t = setTimeout(function () {
+            h.className =
+              h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+          }, config.scriptTimeout),
+          tk = d.createElement("script"),
+          f = false,
+          s = d.getElementsByTagName("script")[0],
+          a;
+        h.className += " wf-loading";
+        tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+        tk.async = true;
+        tk.onload = tk.onreadystatechange = function () {
+          a = this.readyState;
+          if (f || (a && a != "complete" && a != "loaded")) return;
+          f = true;
+          clearTimeout(t);
+          try {
+            Typekit.load(config);
+          } catch (e) {}
+        };
+        s.parentNode.insertBefore(tk, s);
+      })(document);
+    </script>
+  </head>
+  <body>
+    <div id="header_container">
+      <div class="main_header">
+        <h1 id="site-title">SaucieR</h1>
+        {% comment %} {% if user.is_authenticated %} Signed in as
+        <strong>{{ user.username }}</strong>. {% else %} Not signed in. {% endif
+        %} {% endcomment %}
+      </div>
+      <ul class="nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}">Register</a>
+        </li>
+      </ul>
+    </div>
+    <hr />
+    {% block body %} {% endblock %}
+  </body>
+</html>

@@ -1,0 +1,102 @@
+html {
+    height: 100%;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%);
+    color: #fff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#header_container {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px 5px 15px;
+    height: 10%;
+}
+
+#header_container>div {
+    text-align: center;
+    height: 100%;
+}
+
+
+#site-title {
+    font-family: "bagel-fat-one", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 2.9rem;
+    text-shadow: 2px 2px 4px rgba(128, 0, 128, 0.6);
+}
+
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+}
+
+.nav-item {
+    display: flex;
+    margin: auto 15px;
+    font-size: 1.6rem;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+#login-form {
+    border: 1px solid #ffffff;
+    border-radius: 1.8rem;
+    width: 65%;
+    height: 75vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    background: black;
+    /* or keep transparent */
+    padding: 2px;
+    /* space for the gradient border */
+    background-clip: padding-box;
+}
+
+#login-form::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 1.8rem;
+    /* match parent */
+    padding: 3px;
+    /* thickness of gradient border */
+    background: conic-gradient(purple, white, purple);
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}

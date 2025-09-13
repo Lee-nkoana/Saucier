@@ -1,3 +1,6 @@
-django
-djangorestframework
-environs
+flask
+flask-cors
+flask-sqlalchemy
+psycopg2-binary   # PostgreSQL adapter
+requests          
+python-dotenv 

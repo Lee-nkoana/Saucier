@@ -1,6 +1,6 @@
 # 🥗 Saucier - Smart Meal Prep & Recipe Recommender
 
-Saucier is a Python-powered web application that helps users generate personalized meal preps, discover recipes, and get smart meal suggestions based on the ingredients, dietary preferences, and goals they input.
+Saucier is a Python-powered **Flask web application** that helps users generate personalized meal preps, discover recipes, and get smart meal suggestions based on the ingredients, dietary preferences, and goals they input.
 
 ## 🚀 Features
 
@@ -14,7 +14,7 @@ Saucier is a Python-powered web application that helps users generate personaliz
 ## 🧰 Tech Stack
 
 - **Python**
-- **Django**
+- **Flask**
 - **HTML / CSS / JavaScript**
 - **PostgreSQL**
 - **REST APIs**
@@ -29,23 +29,63 @@ Saucier is a Python-powered web application that helps users generate personaliz
    cd saucier
    ```
 
-2. ## How to run
+2. ## Create & activate a virtual environment
 
    ```bash
-   python manage.py migrate
-
-   python manage.py runserver
+   python -m venv venv
+   source venv/bin/activate  # Mac/Linux
+   venv\Scripts\activate     # Windows
    ```
 
-   or
+3. ## Install dependencies
 
    ```bash
-   python3 manage.py migrate
+   pip install -r requirements.txt
+   ```
 
-   python3 manage.py runserver
+4. ## How to run the app
+   ```bash
+   flask run
+   ```
+
+   or 
+
+    ```bash
+   python app.py
    ```
 
 ## 🧑‍💻 Contributing
 
 Contributions are more than welcome!
 If you have ideas, issues, or want to contribute code, feel free to open a pull request or issue.
+
+## 📂 Project Structure
+
+   ```plaintext
+   saucier/
+   │
+   ├── app.py                 # Main Flask app entry point
+   ├── requirements.txt       # Python dependencies
+   ├── config.py              # Configurations (DB, API keys, etc.)
+   │
+   ├── /app                   # Application package
+   │   ├── __init__.py
+   │   ├── routes.py          # Flask routes / endpoints
+   │   ├── models.py          # Database models
+   │   ├── services/          # Logic for recipes, meal planning, AI integrations
+   │   └── utils/             # Helper functions
+   │
+   ├── /templates             # HTML templates (Jinja2)
+   │   ├── login.html
+   │   ├── index.html
+   │   ├── dashboard.html
+   │   ├── meal_plan.html
+   │   ├── Register.html
+   │
+   ├── /static                # Static files
+   │   ├── css/
+   │   ├── js/
+   │   └── images/
+   │
+   └── /tests                 # Unit and integration tests
+

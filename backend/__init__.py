@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 
 def create_app():
@@ -14,5 +14,9 @@ def create_app():
     # Import and register blueprints
     from backend.api import register_blueprints
     register_blueprints(app)
+
+    @app.route("/")
+    def home():
+        return render_template("index.html")
 
     return app

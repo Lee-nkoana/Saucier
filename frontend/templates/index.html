@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=h1, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+</head>
+
+<body>
+    <script>
+        (function (d) {
+            var config = {
+                kitId: "sse2qfx",
+                scriptTimeout: 3000,
+                async: true,
+            },
+                h = d.documentElement,
+                t = setTimeout(function () {
+                    h.className =
+                        h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive";
+                }, config.scriptTimeout),
+                tk = d.createElement("script"),
+                f = false,
+                s = d.getElementsByTagName("script")[0],
+                a;
+            h.className += " wf-loading";
+            tk.src = "https://use.typekit.net/" + config.kitId + ".js";
+            tk.async = true;
+            tk.onload = tk.onreadystatechange = function () {
+                a = this.readyState;
+                if (f || (a && a != "complete" && a != "loaded")) return;
+                f = true;
+                clearTimeout(t);
+                try {
+                    Typekit.load(config);
+                } catch (e) { }
+            };
+            s.parentNode.insertBefore(tk, s);
+        })(document);
+    </script>
+    </head>
+
+    <body>
+        <nav id="header_container">
+            <div class="main_header">
+                <h1 id="site-title" class="animate fade-in-up"><span class="letter-cl">S</span>aucie<span
+                        class="letter-cl">R</span></h1>
+            </div>
+            <div class="tagline">Cook. Create. Serve.</div>
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#recipes">Recipes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Login</a>
+                </li>
+            </ul>
+        </nav>
+        <!-- <hr /> -->
+        <div class="animate fade-in-up" id="home">
+            <div class="subline">Saucier finds recipes, suggests budget-friendly swaps with AI, and creates meal-prep
+                plans from the ingredients in your home.</div>
+            <div>some type of image
+                <img src="" alt="food img">
+            </div>
+        </div>
+        <div class="info" id="recipes">
+            <div class="r-tagline">Just a taste?</div>
+            <div class="info-box">
+                <div class="container">
+                    <div class="img-box"></div>
+                    <div class="info-text">this is some subtext under an illustration or image</div>
+                </div>
+                <div class="container">
+                    <div class="img-box"></div>
+                    <div class="info-text">this is some subtext under an illustration or image</div>
+                </div>
+                <div class="container">
+                    <div class="img-box"></div>
+                    <div class="info-text">this is some subtext under an illustration or image</div>
+                </div>
+                <div class="container">
+                    <div class="img-box"></div>
+                    <div class="info-text">this is some subtext under an illustration or image</div>
+                </div>
+            </div>
+        </div>
+
+        <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/animations.js') }}"></script>
+    </body>
+
+</html>

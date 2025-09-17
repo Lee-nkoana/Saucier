@@ -45,12 +45,14 @@ Saucier is a Python-powered **Flask web application** that helps users generate 
 
 4. ## How to run the app
    ```bash
+   cd backend
    flask run
    ```
 
    or 
 
-    ```bash
+   ```bash
+   cd backend
    python app.py
    ```
 

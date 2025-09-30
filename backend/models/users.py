@@ -14,12 +14,9 @@ Base = declarative_base()
 class User(Base):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
-    name = Column(String)
+    username = Column(String)
     email = Column(String, unique=True)
-    balance = Column(Float)
-    password = Column(String) 
-    points = Column(Integer)
-    tier = Column(String)
+    password = Column(String)
 
 #Create tables
 Base.metadata.create_all(engine)  
@@ -31,11 +28,8 @@ session = Session()
 #User Database Operations
 def create_user(username, email, password):
     """Create a new user in the database"""
-    default_balance = 20
-    default_tier = "Silver"
-    default_points = 0
     try:
-        new_user = User(name=username, email=email, password=password, balance=default_balance, tier=default_tier, points=default_points)
+        new_user = User(username=username, email=email, password=password)
         session.add(new_user)
         session.commit()
         return new_user
@@ -54,6 +48,14 @@ def get_user_by_email(email):
     except Exception as e:
         print(f"Error getting user by email: {e}")
         return None
+    
+def get_user_by_username(username):
+    """Get user by username address"""
+    try:
+        return session.query(User).filter_by(username=username).first()
+    except Exception as e:
+        print(f"Error getting user by username: {e}")
+        return None
 
 def get_user_by_id(user_id):
     """Get user by ID"""
@@ -63,27 +65,27 @@ def get_user_by_id(user_id):
         print(f"Error getting user by ID: {e}")
         return None
     
-def get_user_balance(user_email):
-    """Get user balance by account number"""
-    try:
-        return session.query(User).filter_by(email=user_email).first().balance
+# def get_user_balance(user_email):
+#     """Get user balance by account number"""
+#     try:
+#         return session.query(User).filter_by(email=user_email).first().balance
     
-    except Exception as e:
-        print(f"Error getting user by email: {e}")
-        return None
+#     except Exception as e:
+#         print(f"Error getting user by email: {e}")
+#         return None
     
     # # Update
 
-def update_user_balance(user_email, new_balance):
+# def update_user_balance(user_email, new_balance):
 
-    try:
-        user = session.query(User).filter_by(email=user_email).first()
-        user.balance = new_balance
-        session.commit()
+#     try:
+#         user = session.query(User).filter_by(email=user_email).first()
+#         user.balance = new_balance
+#         session.commit()
 
-    except Exception as e:
-        print(f"Error updating user: {e}")
-        return None
+#     except Exception as e:
+#         print(f"Error updating user: {e}")
+#         return None
 
 # delete 
 

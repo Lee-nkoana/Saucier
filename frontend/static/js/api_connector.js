@@ -16,13 +16,10 @@ async function apiRequest(endpoint, data) {
 }
 
 async function registerUser(data) {
-    return await apiRequest("/api/register", data);
+    return await apiRequest("/api/auth/register", data);
 }
 
 async function loginUser(data) {
     return await apiRequest("/api/login", data);
 }
 
-async function createTransaction(data) {
-    return await apiRequest("/api/transaction", data);
-}

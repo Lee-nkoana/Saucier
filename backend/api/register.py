@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from models.users import create_user, get_user_by_email
+from backend.models.users import create_user, get_user_by_email
 
 def register_user():
     try:

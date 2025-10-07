@@ -46,8 +46,7 @@
 <body>
     <a href="{{ url_for('home') }}" class="home-icon-pos"><i class="fa-solid fa-house home-icon"></i></a>
     <div class="main-content">
-        <h1 class="site-title" ><span class="letter-cl">S</span>aucie<span
-                        class="letter-cl">R</span></h1>
+        <h1 class="site-title"><span class="letter-cl">S</span>aucie<span class="letter-cl">R</span></h1>
         <h2 class="tagline">Cook. Create. Serve.</h2>
 
 
@@ -71,4 +70,21 @@
         Already have an account? <a href="{{ url_for('login') }}">login here.</a>
     </div>
     <p id="message"></p>
+    <script src="{{ url_for('static', filename='js/api_connector.js') }}" defer></script>
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            data = {
+                username: e.target.username.value,
+                email: e.target.email.value,
+                password: e.target.password.value,
+                confirm_password: e.target.confirm_password.value
+            }
+
+            const result = await registerUser(data);
+            console.log(result);
+            alert(result.message);
+        })
+    </script>
 </body>

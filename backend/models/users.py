@@ -64,30 +64,6 @@ def get_user_by_id(user_id):
     except Exception as e:
         print(f"Error getting user by ID: {e}")
         return None
-    
-# def get_user_balance(user_email):
-#     """Get user balance by account number"""
-#     try:
-#         return session.query(User).filter_by(email=user_email).first().balance
-    
-#     except Exception as e:
-#         print(f"Error getting user by email: {e}")
-#         return None
-    
-    # # Update
-
-# def update_user_balance(user_email, new_balance):
-
-#     try:
-#         user = session.query(User).filter_by(email=user_email).first()
-#         user.balance = new_balance
-#         session.commit()
-
-#     except Exception as e:
-#         print(f"Error updating user: {e}")
-#         return None
-
-# delete 
 
 def delete(user):
      

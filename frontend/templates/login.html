@@ -52,7 +52,7 @@
         <form id="loginForm" method="post">
             <!-- <p>Enter your login details</p> -->
             <div class="form-group">
-                <input autofocus class="form-control" type="text" name="email" placeholder="Email" />
+                <input autofocus class="form-control" type="text" name="username" placeholder="Username" />
             </div>
             <div class="form-group">
                 <input class="form-control" type="password" name="password" placeholder="Password" />
@@ -62,5 +62,20 @@
         <p id="loginMessage"></p>
         Don't have an account? <a href="{{ url_for('register') }}">Register here.</a>
     </div>
+    <script src="{{ url_for('static', filename='js/api_connector.js') }}" defer></script>
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            data = {
+                username: e.target.username.value,
+                password: e.target.password.value
+            }
+
+            const result = await loginUser(data);
+            console.log(result);
+            alert(result.message);
+        })
+    </script>
 
 </body>

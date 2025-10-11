@@ -26,6 +26,10 @@ def create_app():
     @app.route("/register")
     def register():
         return render_template("register.html")
+    
+    @app.route("/explore")
+    def explore():
+        return render_template("explore.html")
 
     return app
 

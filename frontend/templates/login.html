@@ -68,13 +68,31 @@
             e.preventDefault();
 
             data = {
-                username: e.target.username.value,
-                password: e.target.password.value
+                username: e.target.username.value.trim(),
+                password: e.target.password.value.trim()
             }
 
-            const result = await loginUser(data);
-            console.log(result);
-            alert(result.message);
+            try {
+                const response = await fetch("/api/auth/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                console.log(result);
+
+                if (result.success) {
+                    window.location.href = "/explore";
+                } else {
+                    responseMsg = document.getElementById("message");
+                    responseMsg.textContent = "Could not log into account, try again!"
+                }
+
+            } catch (error) {
+                console.error("Login error:", err);
+                alert("Something went wrong, please try again later.");
+            }
         })
     </script>
 

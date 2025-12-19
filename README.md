@@ -61,6 +61,8 @@ Saucier is a Python-powered **Flask web application** that helps users generate 
 Contributions are more than welcome!
 If you have ideas, issues, or want to contribute code, feel free to open a pull request or issue.
 
+Refer to the CONTRIBUTIONS.md for git commit message structures.
+
 ## 📂 Project Structure
 
    ```plaintext

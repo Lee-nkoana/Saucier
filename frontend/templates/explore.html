@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>explore</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/explore.css') }}">
     <script>
@@ -43,27 +43,25 @@
 
 <body>
     <nav id="header_container">
-            <div class="main_header">
-                <!-- <h1 id="site-title" class="animate fade-in-up"><span class="letter-cl">S</span>aucie<span
-                        class="letter-cl">R</span></h1> -->
-                Saucier
-            </div>
-            <div class="tagline">Cook. Create. Serve.</div>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#recipes">Recipes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ url_for('login') }}">Login</a>
-                </li>
-            </ul>
-        </nav>
+        <div class="main_header">
+            <h1 class="site-title" class="animate fade-in-up" class="letter-cl" id="username"></h1>
+        </div>
+        <div class="tagline">Cook. Create. Serve.</div>
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="#home">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#recipes">Recipes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#about">Logout</a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('login') }}">Profile</a>
+            </li> -->
+        </ul>
+    </nav>
     <header>
         <h1>explore</h1>
     </header>
@@ -72,7 +70,19 @@
 
         </main>
     </section>
+    <script src="{{ url_for('static', filename='js/auth_user.js') }}" defer></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const user = getCurrentUser()
 
+            if (!user) {
+                window.location.href = "/login";
+                return;
+            }
+            document.getElementById("username").textContent = `Hi ${user.username}`;
+
+        })
+    </script>
 </body>
 
 </html>

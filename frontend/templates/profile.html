@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>explore</title>
-    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}"> -->
+    <title>profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/explore.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
     <script>
         (function (d) {
             var config = {
@@ -45,7 +44,8 @@
     <nav id="header_container">
         <div class="main_header">
             <a href="{{ url_for('profile') }}">
-                <h1 class="site-title" class="animate fade-in-up" class="letter-cl" id="username"></h1>
+                <h1 class="site-title" class="animate fade-in-up"><span class="letter-cl">S</span>aucie<span
+                        class="letter-cl">R</span></h1>
             </a>
         </div>
         <div class="tagline">Cook. Create. Serve.</div>
@@ -61,16 +61,6 @@
             </li>
         </ul>
     </nav>
-    <header>
-        <h1>explore</h1>
-    </header>
-    <section>
-        <main>
-            some more content
-        </main>
-    </section>
-    <script src="{{ url_for('static', filename='js/auth_user.js') }}" defer></script>
-    <script src="{{ url_for('static', filename='js/explore.js') }}" defer></script>
 </body>
 
 </html>

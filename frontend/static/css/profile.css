@@ -43,6 +43,7 @@ body {
     font-style: normal;
     font-size: 2.9rem;
     text-shadow: 2px 2px 4px #556B2F;
+    color: #fff;
 }
 
 .letter-cl {
@@ -85,46 +86,4 @@ li {
 a {
     text-decoration: none;
     color: #556B2F;
-}
-
-#home {
-    /* display: grid;
-    grid-template-columns: 2fr 1fr;
-    margin: 2vw 5vh;
-    padding: 5vh 6vw; */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 2vw 5vh;
-    padding: 5vh 10vw;
-    height: 70vh;
-    /* border: 1px solid white; */
-}
-
-.subline {
-    font-size: 3.8rem;
-    /* border: 1px solid red; */
-    text-align: center;
-    font-family: olivia, sans-serif;
-    font-weight: 300;
-}
-
-#recipes {
-    background-color: #141010;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 5vh;
-    min-height: 70vh;
-}
-
-.r-tagline {
-    display: flex;
-    justify-content: center;
-    font-size: 36px;
-    color: #D96F32;
-    font-weight: normal;
-    margin: 15px;
-    font-family: "bagel-fat-one", sans-serif;
-    font-size: 2.8rem;
 }

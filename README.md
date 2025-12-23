@@ -43,7 +43,13 @@ Saucier is a Python-powered **Flask web application** that helps users generate 
    pip install -r requirements.txt
    ```
 
-4. ## How to run the app
+4. ## Install model
+
+   ```bash
+   ollama run mistral
+   ```
+
+5. ## How to run the app
    ```bash
    cd backend
    flask run

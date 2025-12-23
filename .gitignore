@@ -7,13 +7,6 @@ __pycache__/
 # Django specific
 *.log
 *.pot
-*.pyc
-*.pyo
-*.pyd
-*.sqlite3
-db.sqlite3
-media/
-staticfiles/
 
 # Virtual environment
 env/
@@ -21,6 +14,8 @@ venv/
 ENV/
 env.bak/
 *.env
+*.env.local
+*.env.production
 
 # IDE and editor settings
 .vscode/
@@ -54,3 +49,10 @@ yarn-error.log
 # Pip files
 pip-log.txt
 pip-delete-this-directory.txt
+
+# Models
+.ollama/
+
+# Frontend
+dist/
+build/

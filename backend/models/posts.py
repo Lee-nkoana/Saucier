@@ -13,7 +13,7 @@ class Post(Base):
     post_id = Column(Integer, primary_key=True)
     author = Column(String)
     title = Column(String)
-    message = Column(String)
+    recipe = Column(String)
 
 #Create tables
 Base.metadata.create_all(engine)  
@@ -22,9 +22,9 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-def create_post(author, message):
+def create_post(title, author, recipe):
     try:
-        new_post = Post(author=author, message=message)
+        new_post = Post(title=title, author=author, recipe=recipe)
         session.add(new_post)
         session.commit()
         return new_post

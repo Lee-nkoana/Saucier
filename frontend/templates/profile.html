@@ -44,17 +44,17 @@
     <nav id="header_container">
         <div class="main_header">
             <a href="{{ url_for('profile') }}">
-                <h1 class="site-title" class="animate fade-in-up"><span class="letter-cl">S</span>aucie<span
-                        class="letter-cl">R</span></h1>
+                <h1 class="site-title" class="animate fade-in-up"><span class="letter-cl">P</span>rof<span
+                        class="letter-cl">i</span>l<span class="letter-cl">e</span></h1>
             </a>
         </div>
         <div class="tagline">Cook. Create. Serve.</div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#home">Home</a>
+                <a class="nav-link" href="{{ url_for('explore') }}">Explore</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#recipes">Recipes</a>
+                <a class="nav-link" href="#recipes">Add Recipe</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#about">Logout</a>
@@ -62,6 +62,7 @@
         </ul>
     </nav>
     <form action="" method="post" id="createPostForm">
+        <h3>Create a new recipe</h3>
         <div class="form-group">
             <label for="">Enter Recipe title</label>
             <input autofocus class="form-control" type="text" name="title" placeholder="Title" />
@@ -75,45 +76,11 @@
             <input class="form-control" type="hidden" name="author" placeholder="" />
         </div>
         <input class="btn-primary" type="submit" value="Post Recipe" />
+        <button id="close_form">close</button>
     </form>
+    <script src="{{ url_for('static', filename='js/auth_user.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/api_connector.js') }}" defer></script>
-    <script>
-        document.getElementById("createPostForm").addEventListener("submit", async (e) => {
-            e.preventDefault();
-
-            const user = getCurrentUser()
-
-            data = {
-                title: e.target.title.value.trim(),
-                author: user,
-                recipe: e.target.recipe.value.trim()
-            }
-
-            try {
-                const response = await fetch("/api/auth/posts", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-                console.log(result);
-
-                if (result.success) {
-                    console.log("Post created successfully");
-                    setTimeout(() => {
-                        window.location.href = "/explore";
-                    }, 1000);
-                } else {
-                    console.log("Could not create account. Try again!");
-                }
-            } catch (err) {
-                console.error("Registration error:", err);
-                messageEl.style.color = "red";
-                messageEl.textContent = "Something went wrong. Please try again later.";
-            }
-        })
-    </script>
+    <script src="{{ url_for('static', filename='js/explore.js') }}" defer></script>
 </body>
 
 </html>

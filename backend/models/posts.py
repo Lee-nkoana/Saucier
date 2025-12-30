@@ -22,7 +22,7 @@ Base.metadata.create_all(engine)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-def create_post(title, author, recipe):
+def create_new_post(title, author, recipe):
     try:
         new_post = Post(title=title, author=author, recipe=recipe)
         session.add(new_post)

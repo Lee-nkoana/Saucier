@@ -24,5 +24,5 @@ async function loginUser(data) {
 }
 
 async function createPost(data) {
-    return await apiRequest("/api/auth/post")
+    return await apiRequest("/api/auth/posts", data)
 }

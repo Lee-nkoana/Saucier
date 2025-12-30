@@ -14,6 +14,6 @@ def register():
 def login():
     return login_user()
 
-@auth_bp.route("/post", methods=["POST"])
+@auth_bp.route("/posts", methods=["POST"])
 def post():
     return create_post()

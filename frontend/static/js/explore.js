@@ -1,34 +1,10 @@
-document.getElementById("createPostForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
-
+document.addEventListener('DOMContentLoaded', () => {
     const user = getCurrentUser()
 
-    data = {
-        title: e.target.title.value.trim(),
-        author: user.username,
-        recipe: e.target.recipe.value.trim()
+    if (!user) {
+        window.location.href = "/login";
+        return;
     }
 
-    try {
-        const response = await fetch("/api/auth/posts", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        console.log(result);
-
-        if (result.success) {
-            console.log("Post created successfully");
-            setTimeout(() => {
-                window.location.href = "/explore";
-            }, 1000);
-        } else {
-            console.log("Could not create account. Try again!");
-        }
-    } catch (err) {
-        console.error("Registration error:", err);
-        console.log("Something went wrong. Please try again later.");
-    }
-})
+    document.getElementById("username").textContent = `Hi ${user.username}`;
+});

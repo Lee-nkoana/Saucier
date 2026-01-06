@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>profile</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
     <script>
         (function (d) {
@@ -54,7 +55,7 @@
                 <a class="nav-link" href="{{ url_for('explore') }}">Explore</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#recipes">Add Recipe</a>
+                <a class="nav-link" href="#recipes" onclick="openForm()">Create Recipe</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#about">Logout</a>
@@ -76,8 +77,57 @@
             <input class="form-control" type="hidden" name="author" placeholder="" />
         </div>
         <input class="btn-primary" type="submit" value="Post Recipe" />
-        <button id="close_form">close</button>
+        <button id="close_form" onclick="closeForm()">close</button>
     </form>
+    <div class="main">
+        <div class="sidebar">
+            <div>Meal Preps</div>
+            <div>Ask AI</div>
+            <div>Saved Recipes</div>
+
+            <div>Settings</div>
+            <div>Support</div>
+        </div>
+        <div class="postSection">
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+            <div class="card">
+                <h4>Impossible App</h4>
+                <p>In hac habitasse platea dictumst. Vivamus dictum rutrum arcu, a placerat velit sagittis id</p>
+            </div>
+        </div>
+    </div>
+    </div>
     <script src="{{ url_for('static', filename='js/auth_user.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/api_connector.js') }}" defer></script>
     <script src="{{ url_for('static', filename='js/profile.js') }}" defer></script>

@@ -1,3 +1,11 @@
+function openForm() {
+    document.getElementById("createPostForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("createPostForm").style.display = "none";
+}
+
 document.getElementById("createPostForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -20,6 +28,7 @@ document.getElementById("createPostForm").addEventListener("submit", async (e) =
         console.log(result);
 
         if (result.success) {
+            closeForm();
             console.log("Post created successfully");
             setTimeout(() => {
                 window.location.href = "/explore";
@@ -31,4 +40,8 @@ document.getElementById("createPostForm").addEventListener("submit", async (e) =
         console.error("Registration error:", err);
         console.log("Something went wrong. Please try again later.");
     }
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById("createPostForm").style.display = "none";
 })

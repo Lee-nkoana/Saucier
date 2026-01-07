@@ -48,3 +48,11 @@ def get_post_by_title(title):
     except Exception as e:
         print(f"Error getting post by title: {e}")
         return None
+    
+def get_post_by_author(author):
+    """Getting posts by users name"""
+    try:
+        return session.query(Post).filter_by(author=author).all()
+    except Exception as e:
+        print(f"Error retreiving posts by author name: {e}")
+        return []

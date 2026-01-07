@@ -42,6 +42,15 @@ document.getElementById("createPostForm").addEventListener("submit", async (e) =
     }
 })
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById("createPostForm").style.display = "none";
+
+    const user = getCurrentUser;
+    if (!user) {
+        window.location.href = "/login";
+        return;
+    }
+
+
+
 })

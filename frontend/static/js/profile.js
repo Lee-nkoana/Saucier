@@ -45,12 +45,41 @@ document.getElementById("createPostForm").addEventListener("submit", async (e) =
 document.addEventListener('DOMContentLoaded', async () => {
     document.getElementById("createPostForm").style.display = "none";
 
-    const user = getCurrentUser;
+    const user = getCurrentUser();
     if (!user) {
         window.location.href = "/login";
         return;
     }
 
+    const postSection = document.getElementById('postSection');
+    console.log(user.username)
 
+    try {
+        const response = await fetch(`/api/auth/posts/${user.username}`);
+        const result = await response.json();
 
-})
+        if (!result.success || result.data.length === 0) {
+            postSection.innerHTML = "<p>No posts yet.</p>";
+            return;
+        }
+
+        const card = document.getElementById("post")
+
+        console.log(result.data)
+        result.data.forEach(post => {
+            const card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <h4>${post.title}</h4>
+                <p>${post.recipe}</p>
+            `;
+
+            postSection.appendChild(card);
+        });
+
+    } catch (err) {
+        console.error("Failed to load posts", err);
+        postSection.in
+    }
+});

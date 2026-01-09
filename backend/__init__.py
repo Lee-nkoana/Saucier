@@ -71,6 +71,3 @@ def create_app():
         return render_template("chat.html")
 
     return app
-
-
-

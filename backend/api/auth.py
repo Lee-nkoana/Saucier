@@ -2,7 +2,7 @@ from flask import Blueprint
 from backend.models.users import create_user, get_user_by_email
 from backend.api.register import register_user  
 from backend.api.login import login_user
-from backend.api.posts import create_post
+from backend.api.posts import *
 
 auth_bp = Blueprint("auth", __name__)
 
@@ -17,3 +17,7 @@ def login():
 @auth_bp.route("/posts", methods=["POST"])
 def post():
     return create_post()
+
+@auth_bp.route("/posts/<username>", methods=["GET"])
+def user_posts(username):
+    return get_user_posts(username)

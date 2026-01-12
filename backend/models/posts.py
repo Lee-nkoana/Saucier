@@ -56,3 +56,11 @@ def get_post_by_author(author):
     except Exception as e:
         print(f"Error retreiving posts by author name: {e}")
         return []
+    
+def get_all_existing_posts():
+    """Get all existing posts in the database"""
+    try:
+        return session.query(Post).all()
+    except Exception as e:
+        print(f"Error fetching posts: {e}")
+        return []

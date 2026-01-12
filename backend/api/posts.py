@@ -1,5 +1,5 @@
 from flask import request, jsonify
-from backend.models.posts import create_new_post, get_post_by_id, get_post_by_author
+from backend.models.posts import *
 
 def create_post():
     try:
@@ -62,6 +62,27 @@ def get_user_posts(username):
             ]
         }), 200
     
+    except Exception as e:
+        print(f"Get posts error: {e}")
+        return jsonify({
+            "success": False,
+            "message": "Failed to fetch posts"
+        }), 500
+    
+def get_all_posts():
+    try:
+        posts = get_all_existing_posts()
+
+        return jsonify({
+            "success": True,
+            "data": [
+                {
+                    "post_id": post.post_id,
+                    "title": post.title,
+                    "recipe": post.recipe
+                }for post in posts
+            ]
+        }), 200
     except Exception as e:
         print(f"Get posts error: {e}")
         return jsonify({

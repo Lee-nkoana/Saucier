@@ -73,31 +73,48 @@ Refer to the CONTRIBUTIONS.md for git commit message structures.
 
 ## 📂 Project Structure
 
-   ```plaintext
-   saucier/
-   │
-   ├── app.py                 # Main Flask app entry point
-   ├── requirements.txt       # Python dependencies
-   ├── config.py              # Configurations (DB, API keys, etc.)
-   │
-   ├── /app                   # Application package
+```
+   Saucier/
+   ├── CONTRIBUTIONS.md          # Contribution guidelines
+   ├── README.md                 # This file
+   ├── requirements.txt          # Python dependencies
+   ├── backend/                  # Flask backend
+   │   ├── app.py                # App entrypoint
    │   ├── __init__.py
-   │   ├── routes.py          # Flask routes / endpoints
-   │   ├── models.py          # Database models
-   │   ├── services/          # Logic for recipes, meal planning, AI integrations
-   │   └── utils/             # Helper functions
-   │
-   ├── /templates             # HTML templates (Jinja2)
-   │   ├── login.html
-   │   ├── index.html
-   │   ├── dashboard.html
-   │   ├── meal_plan.html
-   │   ├── Register.html
-   │
-   ├── /static                # Static files
-   │   ├── css/
-   │   ├── js/
-   │   └── images/
-   │
-   └── /tests                 # Unit and integration tests
-
+   │   ├── api/                  # API route modules
+   │   │   ├── auth.py
+   │   │   ├── login.py
+   │   │   ├── mealPrep.py
+   │   │   ├── posts.py
+   │   │   ├── recipes.py
+   │   │   └── register.py
+   │   └── models/               # Backend data models
+   │       ├── posts.py
+   │       ├── prep.py
+   │       ├── recipes.py
+   │       └── users.py
+   └── frontend/                 # Frontend assets and templates
+      ├── static/
+      │   ├── css/
+      │   │   ├── animations.css
+      │   │   ├── explore.css
+      │   │   ├── index.css
+      │   │   ├── login.css
+      │   │   ├── profile.css
+      │   │   ├── register.css
+      │   │   └── styles.css
+      │   ├── images/
+      │   └── js/
+      │       ├── animations.js
+      │       ├── api_connector.js
+      │       ├── auth_user.js
+      │       ├── explore.js
+      │       └── profile.js
+      └── templates/
+         ├── chat.html
+         ├── explore.html
+         ├── index.html
+         ├── login.html
+         ├── profile.html
+         └── register.html
+```

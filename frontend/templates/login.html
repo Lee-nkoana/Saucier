@@ -59,7 +59,7 @@
             </div>
             <input class="btn-primary" type="submit" value="Login" />
         </form>
-        <p id="loginMessage"></p>
+        <p id="message"></p>
         Don't have an account? <a href="{{ url_for('register') }}">Register here.</a>
     </div>
     <script src="{{ url_for('static', filename='js/api_connector.js') }}" defer></script>
@@ -90,7 +90,7 @@
                 }
 
             } catch (error) {
-                console.error("Login error:", err);
+                console.error("Login error:", error);
                 alert("Something went wrong, please try again later.");
             }
         })

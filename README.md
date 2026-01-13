@@ -45,6 +45,8 @@ Saucier is a Python-powered **Flask web application** that helps users generate 
 
 4. ## Install model
 
+   Install Ollama: https://ollama.com
+
    ```bash
    ollama run mistral
    ```

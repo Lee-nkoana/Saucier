@@ -13,7 +13,8 @@ def create_app():
     app.secret_key = "dev-secret-key"
     app.config.update(
         SESSION_COOKIE_SAMESITE="Lax",
-        SESSION_COOKIE_SECURE=False
+        SESSION_COOKIE_SECURE=False,
+        SESSION_COOKIE_PATH="/"
     )
 
     # Enable CORS
@@ -44,6 +45,7 @@ def create_app():
     
     @app.route("/explore")
     def explore():
+        print("SESSION CONTENTS:", dict(session))
         if "user_id" not in session:
             return redirect(url_for("login"))
         return render_template("explore.html")

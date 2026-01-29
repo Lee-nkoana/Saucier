@@ -76,14 +76,18 @@
                 const response = await fetch("/api/auth/login", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
+                    credentials: "include",
                     body: JSON.stringify(data)
                 });
 
                 const result = await response.json();
                 console.log(result);
 
-                if (result.success) {
-                    window.location.href = "/explore";
+                if (result.success === true) {
+                    console.log("Redirecting login...")
+                    setTimeout(() => {
+                        window.location.href = "/explore";
+                    }, 1000);
                 } else {
                     responseMsg = document.getElementById("message");
                     responseMsg.textContent = "Could not log into account, try again!"

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, session, url_for
 import requests
 import os
 from flask_cors import CORS
@@ -10,8 +10,14 @@ def create_app():
         static_folder="../frontend/static"
     )
 
+    app.secret_key = "dev-secret-key"
+    app.config.update(
+        SESSION_COOKIE_SAMESITE="Lax",
+        SESSION_COOKIE_SECURE=False
+    )
+
     # Enable CORS
-    CORS(app)
+    CORS(app, supports_credentials=True)
 
     OLLAMA_URL = "http://localhost:11434/api/chat"
     MODEL = "mistral"
@@ -38,6 +44,8 @@ def create_app():
     
     @app.route("/explore")
     def explore():
+        if "user_id" not in session:
+            return redirect(url_for("login"))
         return render_template("explore.html")
     
     @app.route("/chat", methods=["POST"])

@@ -21,6 +21,7 @@ document.getElementById("createPostForm").addEventListener("submit", async (e) =
         const response = await fetch("/api/auth/posts", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
+            credentials: "include",
             body: JSON.stringify(data)
         });
 

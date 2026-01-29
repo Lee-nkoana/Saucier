@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request, jsonify, session
 from backend.models.users import get_user_by_username, get_user_by_email
 
 def login_user():
@@ -33,6 +33,8 @@ def login_user():
                 "success": False,
                 "message": "Incorrect password"
             }), 400
+        
+        session["user_id"] = user.id
         
         return jsonify({
             "success": True,

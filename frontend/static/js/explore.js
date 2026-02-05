@@ -1,17 +1,20 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const user = getCurrentUser()
-
-    if (!user) {
+    const res = await fetch("/api/auth/me", { credentials: "include" });
+    if (!res.ok) {
         window.location.href = "/login";
         return;
     }
+    window.location.href = "/explore";
+    const user = await res.json();
 
     document.getElementById("username").textContent = `Hi ${user.username}`;
 
     const postSection = document.getElementById('postSection');
 
     try {
-        const response = await fetch("/api/auth/posts/all");
+        const response = await fetch("/api/auth/posts/all", {
+            credentials: "include"
+        });
         const result = await response.json();
 
         if (!result.success || result.data.length === 0) {

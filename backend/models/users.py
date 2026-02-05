@@ -23,28 +23,28 @@ Base.metadata.create_all(engine)
 
 #Create Session
 Session = sessionmaker(bind=engine)
-session = Session()
+db_session = Session()
 
 #User Database Operations
 def create_user(username, email, password):
     """Create a new user in the database"""
     try:
         new_user = User(username=username, email=email, password=password)
-        session.add(new_user)
-        session.commit()
+        db_session.add(new_user)
+        db_session.commit()
         return new_user
     except IntegrityError:
-        session.rollback()
+        db_session.rollback()
         return None
     except Exception as e:
-        session.rollback()
+        db_session.rollback()
         print(f"Error creating user: {e}")
         return None
 
 def get_user_by_email(email):
     """Get user by email address"""
     try:
-        return session.query(User).filter_by(email=email).first()
+        return db_session.query(User).filter_by(email=email).first()
     except Exception as e:
         print(f"Error getting user by email: {e}")
         return None
@@ -52,7 +52,7 @@ def get_user_by_email(email):
 def get_user_by_username(username):
     """Get user by username address"""
     try:
-        return session.query(User).filter_by(username=username).first()
+        return db_session.query(User).filter_by(username=username).first()
     except Exception as e:
         print(f"Error getting user by username: {e}")
         return None
@@ -60,7 +60,7 @@ def get_user_by_username(username):
 def get_user_by_id(user_id):
     """Get user by ID"""
     try:
-        return session.query(User).filter_by(id=user_id).first()
+        return db_session.query(User).filter_by(id=user_id).first()
     except Exception as e:
         print(f"Error getting user by ID: {e}")
         return None
@@ -68,8 +68,8 @@ def get_user_by_id(user_id):
 def delete(user):
      
     try:
-        session.delete(user)
-        session.commit()
+        db_session.delete(user)
+        db_session.commit()
 
     except Exception as e:
         print(f"Error deleting user: {e}")

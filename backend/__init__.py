@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify, redirect, session, u
 import requests
 import os
 from flask_cors import CORS
+from backend.models.users import get_user_by_id
 
 def create_app():
     app = Flask(
@@ -49,6 +50,15 @@ def create_app():
         if "user_id" not in session:
             return redirect(url_for("login"))
         return render_template("explore.html")
+    
+    @app.route("/api/auth/me")
+    def me():
+        if "user_id" not in session:
+            return jsonify(success=False), 401
+        user =  get_user_by_id(session["user_id"])
+        if not user:
+            return jsonify(success=False), 401
+        return jsonify(success=True, username=user.username)
     
     @app.route("/chat", methods=["POST"])
     def chat():

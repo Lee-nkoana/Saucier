@@ -24,4 +24,4 @@ def user_posts(username):
 
 @auth_bp.route("/posts/all", methods=["GET"])
 def all_posts():
-    return get_all_existing_posts()
+    return get_all_posts()

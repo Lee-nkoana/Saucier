@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         window.location.href = "/login";
         return;
     }
-    window.location.href = "/explore";
     const user = await res.json();
 
     document.getElementById("username").textContent = `Hi ${user.username}`;
@@ -27,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(result.data)
         result.data.forEach(post => {
             const card = document.createElement("div");
-            card.className = "card";
+            card.className = "cardExplore";
 
             card.innerHTML = `
                 <h4>${post.title}</h4>

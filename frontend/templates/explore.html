@@ -51,7 +51,7 @@
         <div class="tagline">Cook. Create. Serve.</div>
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link" href="#home">Home</a>
+                <a class="nav-link" href="{{ url_for('profile') }}">Profile</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#recipes">Recipes</a>
@@ -68,9 +68,16 @@
         <main>
             <h3>Find the perfect recipes for you</h3>
             <div class="postSection" id="postSection">
-                <div class="card" id="post">
-                </div>
+                
             </div>
+            <div class="pagination" id="pagination"> 
+                <a href="#" id="prev">Previous</a> 
+                <a href="#" class="page-link" data-page="1">1</a> 
+                <a href="#" class="page-link" data-page="2">2</a> 
+                <a href="#" class="page-link" data-page="3">3</a> 
+                <a href="#" id="next">Next</a> 
+                <p id="page-numbers"> </p> 
+            </div> 
         </main>
     </section>
     <script src="{{ url_for('static', filename='js/auth_user.js') }}" defer></script>

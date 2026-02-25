@@ -21,12 +21,11 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        // const card = document.getElementById("post")
-
-        console.log(result.data)
-        result.data.forEach(post => {
+        const shuffled = result.data.sort( () => 0.5 - Math.random());
+        const randomThree = shuffled.slice(0,3);
+        randomThree.forEach( post => {
             const card = document.createElement("div");
-            card.className = "card";
+            card.className = "cardExplore";
 
             card.innerHTML = `
                 <h4>${post.title}</h4>
@@ -36,82 +35,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             postSection.appendChild(card);
         });
 
-        
-
-        function setupPagination(){
-                    //pagination
-            const cardsPerPage = 3;
-            const dataContainer = document.getElementById("dataContainer");
-            const pagination = document.getElementById("pagination");
-            const prevButton = document.getElementById("prev");
-            const nextButton = document.getElementById("next");
-            const pageNumbers = document.getElementById("page-numbers");
-            const pageLinks = document.querySelectorAll(".page-link");
-
-            const cards = Array.from(dataContainer.getElementsByClassName("card"));
-            const totalPages = Math.ceil(cards.length / cardsPerPage);
-            let currentPage = 1;
-
-            function displayPage(page){
-                const startIndex = (page - 1) * cardsPerPage;
-                const endIndex = startIndex + cardsPerPage;
-                cards.forEach((c, index) => {
-                    if (index >= startIndex && index <endIndex){
-                        c.style.display = 'block';
-                    } else {
-                        c.style.display = 'none';
-                    }
-                });
-            }
-
-            function updatePagination(){
-                pageNumbers.textContent = `Page ${currentPage} of ${totalPages}`;
-                prevButton.disabled = currentPage === 1;
-                nextButton.disabled = currentPage === totalPages;
-                pageLinks.forEach((link) => {
-                    const page = parseInt(link.getAttribute("data-page"));
-                    link.classList.toggle("active", page === currentPage);
-                });
-            }
-
-            prevButton.addEventListener("click", () => {
-                if ( currentPage > 1){
-                    currentPage--;
-                    displayPage(currentPage);
-                    updatePagination();
-                }
-            });
-
-            nextButton.addEventListener("click", () => {
-                if ( currentPage < totalPages ){
-                    currentPage++;
-                    displayPage(currentPage);
-                    updatePagination();
-                }
-            });
-
-            pageLinks.forEach((link) => { 
-                link.addEventListener('click', (e) => { 
-                    e.preventDefault(); 
-                    const page = parseInt(link.getAttribute('data-page')); 
-                    if (page !== currentPage) { 
-                        currentPage = page; 
-                        displayPage(currentPage); 
-                        updatePagination(); 
-                    } 
-                }); 
-            }); 
-
-            displayPage(currentPage);
-            updatePagination();
-        }
-        setupPagination();
-
     } catch (err) {
         console.error("Failed to load posts", err);
         postSection.in
     }
-
-    
-
 });

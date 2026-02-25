@@ -21,10 +21,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             return;
         }
 
-        const card = document.getElementById("post")
-
-        console.log(result.data)
-        result.data.forEach(post => {
+        const shuffled = result.data.sort( () => 0.5 - Math.random());
+        const randomThree = shuffled.slice(0,3);
+        randomThree.forEach( post => {
             const card = document.createElement("div");
             card.className = "cardExplore";
 

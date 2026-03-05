@@ -66,7 +66,7 @@ def get_user_by_id(user_id):
         return None
 
 def delete(user):
-     
+    """delet user"""
     try:
         db_session.delete(user)
         db_session.commit()

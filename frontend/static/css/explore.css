@@ -87,6 +87,10 @@ a {
     color: #556B2F;
 }
 
+.mn-hd{
+    margin-left: 5%; 
+}
+
 #home {
     /* display: grid;
     grid-template-columns: 2fr 1fr;
@@ -132,11 +136,13 @@ a {
 .cardExplore{
     display: flex;
     flex-direction: column;
-    border: 1px solid red;
+    border-radius: 15px;
     align-items: center;
     justify-content: center;
     /* width: 25%; */
     height: 100%;
+    background-color: #E6CFA7;
+    color: #1A1A19;
 }
 
 .postSection{

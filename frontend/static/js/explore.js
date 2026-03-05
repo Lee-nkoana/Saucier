@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     document.getElementById("username").textContent = `Hi ${user.username}`;
 
-    const postSection = document.getElementById('postSection');
+    const postSection = document.getElementById('dataContainer');
 
     try {
         const response = await fetch("/api/auth/posts/all", {
@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
         const shuffled = result.data.sort( () => 0.5 - Math.random());
         const randomThree = shuffled.slice(0,3);
+        console.log(randomThree)
         randomThree.forEach( post => {
             const card = document.createElement("div");
             card.className = "cardExplore";
@@ -37,6 +38,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     } catch (err) {
         console.error("Failed to load posts", err);
-        postSection.in
     }
 });

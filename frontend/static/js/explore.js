@@ -26,12 +26,26 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(randomThree)
         randomThree.forEach( post => {
             const card = document.createElement("div");
+            const btnSave = document.createElement("button");
             card.className = "cardExplore";
+            btnSave.className = "saveRecipe";
+            btnSave.textContent = "Save";
+
+            btnSave.addEventListener('click', () => {
+                try {
+                     
+                } catch (error) {
+                    console.log("Could not save post")
+                }
+            } )
 
             card.innerHTML = `
                 <h4>${post.title}</h4>
                 <p>${post.recipe}</p>
+    
             `;
+
+            card.appendChild(btnSave);
 
             postSection.appendChild(card);
         });

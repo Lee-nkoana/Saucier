@@ -1,91 +1,52 @@
-from flask import request, jsonify
-from backend.models.posts import *
+from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, PrimaryKeyConstraint
+from sqlalchemy.orm import declarative_base, sessionmaker, relationship
+from sqlalchemy.exc import IntegrityError
 
-# def create_post():
-#     try:
-#         data = request.get_json()
+DataBase_URL = "sqlite:///database.db"
+engine = create_engine(DataBase_URL, echo=True)
 
-#         if not data:
-#             return jsonify({
-#                 "success": False,
-#                 "messsage": "No data provided"
-#             }), 400
-        
-#         title = data.get("title")
-#         recipe =  data.get("recipe")
-#         author = data.get("author")
+Base = declarative_base()
 
-#         if not title or not recipe or not author:
-#             return jsonify({
-#                 "success": False,
-#                 "message": "Fields can not be empty"
-#             }), 400
-        
-#         newPost = create_new_post(title, author, recipe)
+class SavedPosts(Base):
+    __tablename__ = 'saved_posts'
 
-#         if newPost is None:
-#             return jsonify({
-#                 "success": False,
-#                 "message": "Failed to create new post"
-#             }), 500
-        
-#         return jsonify({
-#             "success": True,
-#             "message": "Account created successfully",
-#             "data": {
-#                 "post_id": newPost.post_id,
-#                 "post_title": newPost.title,
-#                 "post_author": newPost.author,
-#                 "recipe": newPost.recipe
-#             }
-#         }), 200
+    user_id = Column(Integer, ForeignKey('users.id'))
+    post_id = Column(Integer, ForeignKey('posts.post_id'))
+
+    post = relationship("Post")
+
+    __table_args__ = (
+        PrimaryKeyConstraint('user_id', 'post_id'),
+    )
+
+    def to_dict(self):
+        return{
+            "post_id": self.post_id,
+            "user_id": self.user_id,
+            "post": {
+                "author": self.post.author if self.post else None,
+                "title": self.post.title if self.post else None,
+                "recipe": self.post.recipe if self.post else None
+            }
+        }
+
+Base.metadata.create_all(engine)  
+
+Session = sessionmaker(bind=engine)
+db_session = Session()
+
+def save_post(post_id, user_id):
+    try:
+        saved_post = SavedPosts(post_id=post_id, user_id=user_id)
+        db_session.add(saved_post)
+        db_session.commit()
+        return saved_post
+    except IntegrityError:
+        db_session.rollback()
+        print(f"Post already saved")
+        return None
+    except Exception as e:
+        db_session.rollback()
+        print(f"Error saving post: {e}")
+        return None
     
-#     except Exception as e:
-#         print(f"Registration error: {e}")
-#         return jsonify({ 
-#             "success": False,
-#             "message": "Failed to create post"
-#         }), 500
-
-# def get_user_posts(username):
-#     try:
-#         posts = get_post_by_author(username)
-
-#         return jsonify({
-#             "success": True,
-#             "data": [
-#                 {
-#                     "post_id": post.post_id,
-#                     "title": post.title,
-#                     "recipe": post.recipe
-#                 } for post in posts
-#             ]
-#         }), 200
-    
-#     except Exception as e:
-#         print(f"Get posts error: {e}")
-#         return jsonify({
-#             "success": False,
-#             "message": "Failed to fetch posts"
-#         }), 500
-    
-# def get_all_posts():
-#     try:
-#         posts = get_all_existing_posts()
-
-#         return jsonify({
-#             "success": True,
-#             "data": [
-#                 {
-#                     "post_id": post.post_id,
-#                     "title": post.title,
-#                     "recipe": post.recipe
-#                 }for post in posts
-#             ]
-#         }), 200
-#     except Exception as e:
-#         print(f"Get posts error: {e}")
-#         return jsonify({
-#             "success": False,
-#             "message": "Failed to fetch posts"
-#         }), 500 

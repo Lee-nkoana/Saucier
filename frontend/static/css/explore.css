@@ -137,12 +137,12 @@ a {
     display: flex;
     flex-direction: column;
     border-radius: 15px;
-    align-items: center;
-    justify-content: center;
+    padding: 10% 5%;
     /* width: 25%; */
     height: 100%;
     background-color: #E6CFA7;
     color: #1A1A19;
+
 }
 
 .postSection{
@@ -153,4 +153,25 @@ a {
     width: 90vw;
     height: 60vh;
     /* border: 1px solid purple; */
+}
+
+.saveRecipe{
+    background-color: #556B2F;
+    color: #E6CFA7;
+    border: none;
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 1rem;
+}
+
+.saveRecipe:hover{
+    cursor: pointer;
+    background-color: #1A1A19;
+    color: #D96F32;
+    
+}
+
+.postHeader{
+    display: flex;
+    justify-content: space-between;
 }

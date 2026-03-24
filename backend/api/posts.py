@@ -89,3 +89,5 @@ def get_all_posts():
             "success": False,
             "message": "Failed to fetch posts"
         }), 500
+
+    

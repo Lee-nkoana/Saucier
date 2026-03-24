@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
     const user = await res.json();
 
-    document.getElementById("username").textContent = `Hi ${user.username}`;
+    document.getElementById("username").textContent = `Explore`;
 
     const postSection = document.getElementById('dataContainer');
 
@@ -31,21 +31,49 @@ document.addEventListener('DOMContentLoaded', async () => {
             btnSave.className = "saveRecipe";
             btnSave.textContent = "Save";
 
-            btnSave.addEventListener('click', () => {
+            btnSave.addEventListener('click', async () => {
                 try {
-                     
+                    const res = await fetch("/api/posts/save", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        credentials: "include",
+                        body: JSON.stringify({
+                            post_id: post.post_id
+                        })
+                    });
+
+                    const data = await res.json();
+                    
+                    if (res.ok){
+                        btnSave.textContent = "Saved";
+                        btnSave.disabled = true;
+                    }else{
+                        console.log(data.message || "Failed to save post");
+                    }
+
                 } catch (error) {
                     console.log("Could not save post")
                 }
             } )
 
-            card.innerHTML = `
-                <h4>${post.title}</h4>
-                <p>${post.recipe}</p>
-    
-            `;
+            const postHeader = document.createElement("div");
+            const postBody = document.createElement("div");
+            postHeader.className = "postHeader";
+            postBody.className = "postBody";
 
-            card.appendChild(btnSave);
+            postHeader.innerHTML = `
+                <h4>${post.title}</h4>
+            `
+            postHeader.appendChild(btnSave);
+
+            postBody.innerHTML = `
+                <p>${post.recipe}</p>
+            `
+            
+            card.appendChild(postHeader);
+            card.appendChild(postBody);
 
             postSection.appendChild(card);
         });
